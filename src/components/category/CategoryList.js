@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import context from "../../contexts";
 
-const LIST_HOVER_COLOR = "#e2e6ff";
+const LIST_HOVER_COLOR = "#e2e6ff"; 
 const LIST_SELECTED_COLOR = "#bfc9ff";
 
 const Wrapper = styled.div`
