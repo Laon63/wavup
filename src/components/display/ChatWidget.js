@@ -105,7 +105,7 @@ const ChatWidget = () => {
   const {channel} = useContext(context);
   const initialMessages = channel.initialMessages.map(msg => ({
     key: uuid(),
-    nickName: "CRISPSOUND",
+    nickName: "WAVUP",
     time: new Date(),
     contents: msg
   }));

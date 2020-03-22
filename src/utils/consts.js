@@ -1,3 +1,5 @@
+export const URL_ROUTER_NAME = "/wavup";
+
 export const widgetList = ["chat", "clock", "playingTime"];
 
 export const channels = [
@@ -6,7 +8,7 @@ export const channels = [
     name: "STUDY SOUND",
     title: "STUDY",
     tags: "#집중력 #편안한",
-    img: "/crispsound/images/studythumb.png",
+    img: "/images/studythumb.png",
     playList: [
       "s49CT4DTAkw",
       "8IXDbVK138w",
@@ -29,7 +31,7 @@ export const channels = [
     name: "노동요",
     title: "WORKING",
     tags: "#돈벌자 #능률상승",
-    img: "/crispsound/images/workingthumb.png",
+    img: "/images/workingthumb.png",
     playList: [
       "TpPwI_Lo0YY",
       "UcnjZfxX5Ss",
@@ -54,7 +56,7 @@ export const channels = [
     name: "애니메이션OST",
     title: "ANIMATION",
     tags: "#지브리 #디즈니",
-    img: "/crispsound/images/zebri.png",
+    img: "/images/zebri.png",
     playList: [
       "xNTIN58fAP8",
       "wPl0WgWmGao",
@@ -76,7 +78,7 @@ export const channels = [
     name: "오늘 하루도 수고했어요",
     title: "CHEER UP",
     tags: "#위로 #격려",
-    img: "/crispsound/images/cheerup.png",
+    img: "/images/cheerup.png",
     playList: [
       "qdbyV3wVoLY",
       "9Idkwe0FXGQ",
@@ -101,7 +103,7 @@ export const channels = [
     name: "상쾌하게 기분전환",
     title: "REFRESHING",
     tags: "#시원한 #기분좋은",
-    img: "/crispsound/images/refreshing.png",
+    img: "/images/refreshing.png",
     playList: [
       "d8pzmY72ucc",
       "a_RWJiGy7Sg",
@@ -127,7 +129,7 @@ export const channels = [
     name: "라면먹고 갈래?",
     title: "ROMATIC",
     tags: "#로맨틱 #무드",
-    img: "/crispsound/images/romantic.png",
+    img: "/images/romantic.png",
     playList: [
       "5HgU3cN_nds",
       "atkAOjx7kh8",
@@ -148,7 +150,7 @@ export const channels = [
     name: "CAFE SOUND",
     title: "CAFE",
     tags: "#커피 #재즈",
-    img: "/crispsound/images/cafe.png",
+    img: "/images/cafe.png",
     playList: [
       "JHIkAEcQL7o",
       "mGYnJqEphZI",

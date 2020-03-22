@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import WidgetSelector from "./header/WidgetSelector";
 import media from "../utils/media";
-import { widgetList } from "../utils/consts";
+import { URL_ROUTER_NAME, widgetList } from "../utils/consts";
 import context from "../contexts";
 import { withRouter } from "react-router-dom";
 
@@ -55,7 +55,7 @@ function Header({ history }) {
       <ButtonContainer>
         <Icon
           className="material-icons"
-          onClick={() => history.push("/crispsound")}
+          onClick={() => history.push(URL_ROUTER_NAME)}
         >
           arrow_back_ios
         </Icon>
@@ -67,7 +67,7 @@ function Header({ history }) {
       </ButtonContainer>
       <Title
         className="handle"
-        onClick={() => history.push(`/crispsound/${channel.id}`)}
+        onClick={() => history.push(`${URL_ROUTER_NAME}/${channel.id}`)}
       >
         {channel.title} <span className="subTitle">SOUND</span>
       </Title>

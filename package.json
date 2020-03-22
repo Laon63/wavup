@@ -1,5 +1,5 @@
 {
-  "name": "crispsound",
+  "name": "wavup",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -44,5 +44,5 @@
   "devDependencies": {
     "gh-pages": "^2.2.0"
   },
-  "homepage": "http://laon63.github.io/wavup"
+  "homepage": "http://laon63.github.io"
 }
