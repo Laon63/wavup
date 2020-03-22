@@ -52,6 +52,9 @@ const Span = styled.span`
   padding: 5px;
 `;
 
+const CLICK_LIST = () => {
+  alert("test")
+}
 
 function CategoryList() {
   const { category, video } = useContext(context);
@@ -64,7 +67,7 @@ function CategoryList() {
         (playListInfo || []).map((item, i)=>{
           const thumbnailURL = item.thumbnails ? item.thumbnails.default.url : "";
           return (
-            <Li key={i} style={{ background: i == currentVideoIndex ? LIST_SELECTED_COLOR : ""}}>
+            <Li key={i} style={{ background: i === currentVideoIndex ? LIST_SELECTED_COLOR : ""}} onClick={CLICK_LIST}>
               <Image src={thumbnailURL} alt="Error" />
               <Span>{item.title}</Span>
             </Li>
