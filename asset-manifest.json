@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/wavup/static/css/main.29eed905.chunk.css",
+    "main.js": "/wavup/static/js/main.aa364f23.chunk.js",
+    "main.js.map": "/wavup/static/js/main.aa364f23.chunk.js.map",
+    "runtime-main.js": "/wavup/static/js/runtime-main.5f007a3f.js",
+    "runtime-main.js.map": "/wavup/static/js/runtime-main.5f007a3f.js.map",
+    "static/js/2.51885943.chunk.js": "/wavup/static/js/2.51885943.chunk.js",
+    "static/js/2.51885943.chunk.js.map": "/wavup/static/js/2.51885943.chunk.js.map",
+    "index.html": "/wavup/index.html",
+    "precache-manifest.c5c70e9f2f92bb9f73563974be7ed66b.js": "/wavup/precache-manifest.c5c70e9f2f92bb9f73563974be7ed66b.js",
+    "service-worker.js": "/wavup/service-worker.js",
+    "static/css/main.29eed905.chunk.css.map": "/wavup/static/css/main.29eed905.chunk.css.map",
+    "static/js/2.51885943.chunk.js.LICENSE": "/wavup/static/js/2.51885943.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5f007a3f.js",
+    "static/js/2.51885943.chunk.js",
+    "static/css/main.29eed905.chunk.css",
+    "static/js/main.aa364f23.chunk.js"
+  ]
+}
