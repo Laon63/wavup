@@ -8,9 +8,9 @@ import Landing from "./components/Landing";
 function App() {
   return (
     <Provider>
-      <Route path="/wavup/" component={Landing} exact />
+      <Route path="/" component={Landing} exact />
       <Route
-        path="/wavup/:id"
+        path="/:id"
         render={() => (
           <Container>
             <Main></Main>
