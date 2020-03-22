@@ -1,4 +1,4 @@
-export const URL_ROUTER_NAME = "/wavup";
+export const URL_ROUTER_NAME = "";
 
 export const widgetList = ["chat", "clock", "playingTime"];
 
