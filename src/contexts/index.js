@@ -48,6 +48,11 @@ const videoReducer = (state, action) => {
           (state.currentVideo - 1 + action.playList.length) %
           action.playList.length
       };
+    case "SELECT":
+      return {
+        ...state,
+        currentVideo: action.currentVideo
+      };
     case "CLEAR":
       return { currentVideo: 0 };
     default:
@@ -102,7 +107,7 @@ const Provider = ({ children }) => {
   });
   const [channel, channelDispatch] = useReducer(channelReducer, null);
   const [category, categoryDispatch] = useReducer(categoryReducer, {
-    toggleCategory: false, 
+    toggleCategory: false,
     playListInfo: [
       {
         title: "1번영상"

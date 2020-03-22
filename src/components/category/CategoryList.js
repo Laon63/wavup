@@ -52,12 +52,12 @@ const Span = styled.span`
   padding: 5px;
 `;
 
-const CLICK_LIST = () => {
-  alert("test")
+const CLICK_LIST = (index, dispatch) => {
+  dispatch.video({ type: "SELECT", currentVideo: index });
 }
 
 function CategoryList() {
-  const { category, video } = useContext(context);
+  const { category, video, dispatch } = useContext(context);
   const playListInfo = category.playListInfo;
   const currentVideoIndex = video.currentVideo;
 
@@ -67,7 +67,7 @@ function CategoryList() {
         (playListInfo || []).map((item, i)=>{
           const thumbnailURL = item.thumbnails ? item.thumbnails.default.url : "";
           return (
-            <Li key={i} style={{ background: i === currentVideoIndex ? LIST_SELECTED_COLOR : ""}} onClick={CLICK_LIST}>
+            <Li key={i} style={{ background: i === currentVideoIndex ? LIST_SELECTED_COLOR : ""}} onClick={CLICK_LIST.bind(null, i, dispatch)}>
               <Image src={thumbnailURL} alt="Error" />
               <Span>{item.title}</Span>
             </Li>
