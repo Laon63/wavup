@@ -10,6 +10,7 @@ import { withRouter } from "react-router-dom";
 
 const Wrapper = styled.div`
   width: 80%;
+  height: 55%;
   max-width: 1000px;
   max-height: 600px;
   display: flex;

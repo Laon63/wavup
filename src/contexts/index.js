@@ -16,7 +16,7 @@ const widgetReducer = (state, action) => {
             use: !state[action.name]
           })
         );
-      } catch (e) {}
+      } catch (e) { }
 
       return {
         ...state,
@@ -68,6 +68,22 @@ const channelReducer = (state, action) => {
   }
 };
 
+const categoryReducer = (state, action) => {
+  switch (action.type) {
+    case "TOGGLE":
+      return {
+        ...state,
+        toggleCategory: !state.toggleCategory,
+        playListInfo: action.playListInfo
+      };
+    case "HIDE":
+      return null;
+    default:
+      return state;
+  }
+};
+
+
 let initialWidget = {};
 widgetList.forEach(item => {
   try {
@@ -76,7 +92,7 @@ widgetList.forEach(item => {
     } else {
       initialWidget[item] = true;
     }
-  } catch (e) {}
+  } catch (e) { }
 });
 
 const Provider = ({ children }) => {
@@ -85,15 +101,37 @@ const Provider = ({ children }) => {
     currentVideo: 0
   });
   const [channel, channelDispatch] = useReducer(channelReducer, null);
+  const [category, categoryDispatch] = useReducer(categoryReducer, {
+    toggleCategory: false,
+    playListInfo: [
+      {
+        title: "1번영상"
+      },
+      {
+        title: "2번영상"
+      },
+      {
+        title: "3번영상"
+      },
+      {
+        title: "4번영상"
+      },
+      {
+        title: "5번영상"
+      }
+    ]
+  });
 
   const value = {
     widget,
     video,
     channel,
+    category,
     dispatch: {
       widget: widetDispatch,
       video: videoDispatch,
-      channel: channelDispatch
+      channel: channelDispatch,
+      category: categoryDispatch
     }
   };
 

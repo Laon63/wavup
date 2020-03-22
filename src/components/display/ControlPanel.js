@@ -3,6 +3,9 @@ import context from "../../contexts";
 import styled from "styled-components";
 import { useWindowSize } from "../../utils/hooks";
 import media from "../../utils/media";
+import axios from "axios";
+
+const GET_VIDEOS_URL = "https://www.googleapis.com/youtube/v3/videos";
 
 const Panel = styled.div`
   display: flex;
@@ -95,9 +98,52 @@ const ControlPanel = () => {
     dispatch.video({ type: "PREV", playList: channel.playList });
   };
 
+  const getVideoInfo = (videoId) => {
+    return axios.get(GET_VIDEOS_URL, {
+      params: {
+        id: videoId,
+        part: "snippet",
+        key: "AIzaSyCVZMG-9XPs2D78KwRqLYQ-I60XNMzpBA4",
+        maxResults: 2
+      }
+    });
+  };
+
+  let playListInfo;
+  const toggleCategory = () => {
+    if (playListInfo) {
+      dispatch.category({ type: "TOGGLE", playListInfo: playListInfo });
+    } else {
+      Promise.all(channel.playList.map((videoId) => {
+        return getVideoInfo(videoId);
+      }))
+        .then((response) => {
+          playListInfo = response.map((res) => {
+            if (res.data.items.length > 0) {
+              return res.data.items[0].snippet;
+            } else {
+              return {
+                title: "error",
+                description: "error"
+              }
+            }
+          });
+          dispatch.category({ type: "TOGGLE", playListInfo: playListInfo });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  };
+
   return (
     <Panel>
-      <Icon className="material-icons" font={font}>
+      <Icon 
+        className="material-icons" 
+        font={font}
+        onClick={toggleCategory}
+        id="categoryBtn"
+      >
         playlist_play
       </Icon>
       <Icon className="material-icons" font={font} style={{ color: "#ff5722" }}>

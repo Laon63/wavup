@@ -5,7 +5,8 @@ import Display from "./Display";
 import Category from "./Category";
 
 const Wrapper = styled.div`
-  float: left;
+  /* float: left; */
+  display: flex;
   background: #fff;
   width: 100%;
   height: 100%;
@@ -15,7 +16,7 @@ function Contents() {
   return (
     <Wrapper>
       <Display></Display>
-      {/* <Category></Category> */}
+      <Category></Category>
     </Wrapper>
   );
 }

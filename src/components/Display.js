@@ -10,10 +10,12 @@ import media from "../utils/media";
 const Wrapper = styled.div`
   position: relative;
   width: 100%;
-  padding-top: 53%;
+  height: 100%;
+  /* padding-top: 53%; */
   border-radius: 0.5rem;
   overflow: hidden;
   display: flex;
+  flex: 1;
   background-color: black;
   font-family: "Baloo Bhai", cursive;
 
