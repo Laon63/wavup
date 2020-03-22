@@ -8,9 +8,9 @@ import Landing from "./components/Landing";
 function App() {
   return (
     <Provider>
-      <Route path="/crispsound/" component={Landing} exact />
+      <Route path="/wavup/" component={Landing} exact />
       <Route
-        path="/crispsound/:id"
+        path="/wavup/:id"
         render={() => (
           <Container>
             <Main></Main>

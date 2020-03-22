@@ -55,7 +55,7 @@ function Header({ history }) {
       <ButtonContainer>
         <Icon
           className="material-icons"
-          onClick={() => history.push("/crispsound")}
+          onClick={() => history.push("/")}
         >
           arrow_back_ios
         </Icon>
@@ -67,7 +67,7 @@ function Header({ history }) {
       </ButtonContainer>
       <Title
         className="handle"
-        onClick={() => history.push(`/crispsound/${channel.id}`)}
+        onClick={() => history.push(`/${channel.id}`)}
       >
         {channel.title} <span className="subTitle">SOUND</span>
       </Title>
