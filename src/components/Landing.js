@@ -50,12 +50,13 @@ const Expander = styled.div`
   cursor: pointer;
 `;
 
-const Contents = styled.div`
-  padding-top: 1rem;
-`;
+const Contents = styled.div``;
 
 const PlayList = styled.div`
+  padding: 1rem 0;
   width: 100%;
+  background-color: #f0f0f0;
+  overflow: hidden;
 `;
 
 const CardWrapper = styled.div`
@@ -120,6 +121,14 @@ const CardTags = styled.div`
   color: #aaa;
   font-size: 0.6rem;
 `;
+const Footer = styled.div`
+  text-align: center;
+  letter-spacing: 0.15rem;
+  font-size: 0.8rem;
+  background-color: #f0f0f0;
+  padding: 5rem 3rem 3rem 3rem;
+  color: #666666;
+`;
 
 const Landing = ({ history }) => {
   return (
@@ -157,6 +166,9 @@ const Landing = ({ history }) => {
           ))}
         </PlayList>
       </Contents>
+      <Footer>
+            developed by <span style={{fontWeight: 600}}>브로콜리, Wise Cow, 로봇</span>
+      </Footer>
     </Wrapper>
   );
 };
