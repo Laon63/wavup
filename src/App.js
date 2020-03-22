@@ -9,7 +9,7 @@ import { URL_ROUTER_NAME } from "./utils/consts";
 function App() {
   return (
     <Provider>
-      <Route path={URL_ROUTER_NAME} component={Landing} exact />
+      <Route path={URL_ROUTER_NAME + "/"} component={Landing} exact />
       <Route
         path={URL_ROUTER_NAME + "/:id"}
         render={() => (
