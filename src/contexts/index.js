@@ -102,7 +102,7 @@ const Provider = ({ children }) => {
   });
   const [channel, channelDispatch] = useReducer(channelReducer, null);
   const [category, categoryDispatch] = useReducer(categoryReducer, {
-    toggleCategory: false,
+    toggleCategory: false, 
     playListInfo: [
       {
         title: "1번영상"
