@@ -5,7 +5,7 @@ export const widgetList = ["chat", "clock", "playingTime"];
 export const channels = [
   {
     id: "myList",
-    name: "MY SOUND",
+    name: "#MY SOUND",
     title: "MY",
     tags: "#나만의 목록 #좋아요",
     img: "/images/mysound.png",
