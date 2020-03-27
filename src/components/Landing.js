@@ -130,6 +130,14 @@ const Footer = styled.div`
   color: #666666;
 `;
 
+const goChannel = (history, channel) => {
+  if(!channel.playList || !channel.playList.length){
+    alert(`${channel.name}의 목록이 없습니다`);
+    return;
+  }
+  history.push(`${URL_ROUTER_NAME}/${channel.id}`);
+};
+
 const Landing = ({ history }) => {
   return (
     <Wrapper>
@@ -147,7 +155,7 @@ const Landing = ({ history }) => {
         <PlayList>
           {channels.map(item => (
             <CardWrapper key={item.id}>
-              <Card onClick={() => history.push(`${URL_ROUTER_NAME}/${item.id}`)}>
+              <Card onClick={() => goChannel(history, item)}>
                 <CardInner>
                   <ThumbNail>
                     <img

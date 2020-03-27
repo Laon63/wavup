@@ -16,7 +16,7 @@ const widgetReducer = (state, action) => {
             use: !state[action.name]
           })
         );
-      } catch (e) { }
+      } catch (e) {}
 
       return {
         ...state,
@@ -54,7 +54,23 @@ const videoReducer = (state, action) => {
         currentVideo: action.currentVideo
       };
     case "CLEAR":
-      return { currentVideo: 0 };
+      return { ...state, player: null, currentVideo: 0 };
+    case "ADD_MYLIST":
+      const addList = [...state.myList, action.videoId];
+      localStorage.setItem("myList", JSON.stringify(addList));
+      channels[0].playList = addList;
+      return {
+        ...state,
+        myList: addList,
+      };
+    case "REMOVE_MYLIST":
+      const removeList = state.myList.filter(x => x !== action.videoId);
+      localStorage.setItem("myList", JSON.stringify(removeList));
+      channels[0].playList = removeList;
+      return {
+        ...state,
+        myList: removeList,
+      };
     default:
       return state;
   }
@@ -88,7 +104,7 @@ const categoryReducer = (state, action) => {
   }
 };
 
-
+//위젯 초기화
 let initialWidget = {};
 widgetList.forEach(item => {
   try {
@@ -97,14 +113,23 @@ widgetList.forEach(item => {
     } else {
       initialWidget[item] = true;
     }
-  } catch (e) { }
+  } catch (e) {}
 });
+
+//비디오 초기화
+const initialVideo = {
+  currentVideo: 0,
+  myList: (localStorage.myList && JSON.parse(localStorage.myList)) || []
+};
+
+//my리스트 목록
+if (initialVideo.myList && initialVideo.myList.length > 0) {
+  channels[0].playList = initialVideo.myList;
+}
 
 const Provider = ({ children }) => {
   const [widget, widetDispatch] = useReducer(widgetReducer, initialWidget);
-  const [video, videoDispatch] = useReducer(videoReducer, {
-    currentVideo: 0
-  });
+  const [video, videoDispatch] = useReducer(videoReducer, initialVideo);
   const [channel, channelDispatch] = useReducer(channelReducer, null);
   const [category, categoryDispatch] = useReducer(categoryReducer, {
     toggleCategory: false,

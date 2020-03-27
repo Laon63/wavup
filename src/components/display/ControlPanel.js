@@ -37,9 +37,12 @@ const Icon = styled.i`
 `;
 
 const ControlPanel = () => {
-  const { channel, dispatch } = useContext(context);
+  const { video, channel, dispatch } = useContext(context);
   const [font, setFont] = useState(0);
-  const ref = useRef({ isPortrait: window.matchMedia("(orientation: portrait)").matches });
+  const [isFavorite, setFavorite] = useState(0);
+  const ref = useRef({
+    isPortrait: window.matchMedia("(orientation: portrait)").matches
+  });
   const size = useWindowSize();
 
   useEffect(() => {
@@ -98,7 +101,7 @@ const ControlPanel = () => {
     dispatch.video({ type: "PREV", playList: channel.playList });
   };
 
-  const getVideoInfo = (videoId) => {
+  const getVideoInfo = videoId => {
     return axios.get(GET_VIDEOS_URL, {
       params: {
         id: videoId,
@@ -114,40 +117,62 @@ const ControlPanel = () => {
     if (playListInfo) {
       dispatch.category({ type: "TOGGLE", playListInfo: playListInfo });
     } else {
-      Promise.all(channel.playList.map((videoId) => {
-        return getVideoInfo(videoId);
-      }))
-        .then((response) => {
-          playListInfo = response.map((res) => {
+      Promise.all(
+        channel.playList.map(videoId => {
+          return getVideoInfo(videoId);
+        })
+      )
+        .then(response => {
+          playListInfo = response.map(res => {
             if (res.data.items.length > 0) {
               return res.data.items[0].snippet;
             } else {
               return {
                 title: "error",
                 description: "error"
-              }
+              };
             }
           });
           dispatch.category({ type: "TOGGLE", playListInfo: playListInfo });
         })
-        .catch((err) => {
+        .catch(err => {
           console.log(err);
         });
     }
   };
 
+  //favorite 여부
+  useEffect(() => {
+    const videoId = channel.playList[video.currentVideo];
+    setFavorite(video.myList.includes(videoId));
+  }, [channel.playList, video.currentVideo, video.myList]);
+
+  const toggleFavorite = () => {
+    const videoId = channel.playList[video.currentVideo];
+    if (isFavorite) {
+      dispatch.video({ type: "REMOVE_MYLIST", videoId: videoId });
+    } else {
+      dispatch.video({ type: "ADD_MYLIST", videoId: videoId });
+    }
+  };
+
   return (
     <Panel>
-      <Icon 
-        className="material-icons" 
+      <Icon
+        className="material-icons"
         font={font}
         onClick={toggleCategory}
         id="categoryBtn"
       >
         playlist_play
       </Icon>
-      <Icon className="material-icons" font={font} style={{ color: "#ff5722" }}>
-        favorite
+      <Icon
+        className="material-icons"
+        font={font}
+        style={{ color: isFavorite ? "#ff5722" : "" }}
+        onClick={toggleFavorite}
+      >
+        {isFavorite ? "favorite" : "favorite_border"}
       </Icon>
       <Icon
         className="material-icons"

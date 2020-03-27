@@ -4,6 +4,15 @@ export const widgetList = ["chat", "clock", "playingTime"];
 
 export const channels = [
   {
+    id: "myList",
+    name: "MY SOUND",
+    title: "MY",
+    tags: "#나만의 목록 #좋아요",
+    img: "/images/mysound.png",
+    playList: [],
+    initialMessages: ["내가 좋아하는 소리들"]
+  },
+  {
     id: "study",
     name: "STUDY SOUND",
     title: "STUDY",
