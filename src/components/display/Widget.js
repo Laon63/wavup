@@ -98,9 +98,11 @@ const Widget = ({ children, type, movable, width, height, defaultRatio }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [size]);
 
+  var isShow = widget[type];
+
   if (!movable) {
     return (
-      <Wrapper movable={false} width={width} height={height}>
+      <Wrapper movable={false} width={isShow ? width : 0} height={isShow ? height : 0}>
         {widget[type] ? children : null}
       </Wrapper>
     );
@@ -108,8 +110,8 @@ const Widget = ({ children, type, movable, width, height, defaultRatio }) => {
   return (
     <Wrapper
       movable={true}
-      width={width}
-      height={height}
+      width={isShow ? width : 0}
+      height={isShow ? height : 0}
       onMouseDown={down}
       onTouchStart={down}
       onMouseMove={move}
