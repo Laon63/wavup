@@ -29,6 +29,7 @@ const Li = styled.li`
   list-style: none;
   display: flex;
   margin: 0;
+  height: 5.2em;
 
   /* background-image: linear-gradient(to right, rgba(255,255,255,0) 50%, #ddd 50%);
   background-size: 200% auto;
@@ -49,17 +50,26 @@ const Image = styled.img`
 
 const Span = styled.span`
   flex: 9;
-  padding: 5px;
+  padding: 10px 5px 0 5px;
+  display: -webkit-box;
+  overflow: hidden;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  font-family: "hanna", cursive;
+  font-size: 0.9em;
+  line-height: 1.5em;
+  height: 4.3em;  
 `;
-
-const CLICK_LIST = (index, dispatch) => {
-  dispatch.video({ type: "SELECT", currentVideo: index });
-}
 
 function CategoryList() {
   const { category, video, dispatch } = useContext(context);
   const playListInfo = category.playListInfo;
   const currentVideoIndex = video.currentVideo;
+
+  const CLICK_LIST = (index) => {
+    dispatch.video({ type: "SELECT", currentVideo: index });
+  }
 
   return (<Wrapper>
     <Ul>
@@ -67,7 +77,7 @@ function CategoryList() {
         (playListInfo || []).map((item, i)=>{
           const thumbnailURL = item.thumbnails ? item.thumbnails.default.url : "";
           return (
-            <Li key={i} style={{ background: i === currentVideoIndex ? LIST_SELECTED_COLOR : ""}} onClick={CLICK_LIST.bind(null, i, dispatch)}>
+            <Li key={i} style={{ background: i === currentVideoIndex ? LIST_SELECTED_COLOR : ""}} onClick={CLICK_LIST.bind(null, i)}>
               <Image src={thumbnailURL} alt="Error" />
               <Span>{item.title}</Span>
             </Li>

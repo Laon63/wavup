@@ -20,7 +20,7 @@ const Wrapper = styled.div`
   ${media.mobile`
     width: 100%;
     flex-direction: column-reverse;
-    padding-top: 0;
+    padding-top: 4em;
   `}
 `;
 
@@ -29,7 +29,8 @@ function Main({ match }) {
 
   useEffect(() => {
     dispatch.channel({ type: "SET", id: match.params.id });
-
+    dispatch.category({ type: "HIDE" });
+    
     return () => {
       dispatch.channel({ type: "CLEAR" });
     };

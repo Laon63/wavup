@@ -162,6 +162,7 @@ const ControlPanel = () => {
         className="material-icons"
         font={font}
         onClick={toggleCategory}
+        style={{ display: isFullscreen() ? "none" : "block" }}
         id="categoryBtn"
       >
         playlist_play
