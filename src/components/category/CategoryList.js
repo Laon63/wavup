@@ -11,6 +11,7 @@ const Wrapper = styled.div`
   font-family: "Baloo Bhai", fantasy;
   margin: 5px;
   overflow: auto;
+  width: 100%;
   height: 97%;
 `;
 
