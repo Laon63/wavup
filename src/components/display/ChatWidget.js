@@ -128,7 +128,7 @@ const ChatWidget = () => {
 
   useEffect(() => {
     // eslint-disable-next-line no-undef
-    ref.current.socket = (window.io && window.io("http://ec2-52-79-250-14.ap-northeast-2.compute.amazonaws.com:8080")) || {
+    ref.current.socket = (window.io && window.io("http://ec2-13-125-48-202.ap-northeast-2.compute.amazonaws.com:8080")) || {
       on: () => {}
     };
 
