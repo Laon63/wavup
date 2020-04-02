@@ -23,8 +23,12 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "yarn build",
-    "deploy": "gh-pages -d build"
+
+    "cname": "echo www.wavup.me > build\\CNAME",
+    "nojekyll": "echo > build\\.nojekyll",
+    "predeploy": "npm run build && npm run cname && npm run nojekyll",
+    "deploy": "gh-pages --add --dotfiles -d build"
+
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -44,5 +48,5 @@
   "devDependencies": {
     "gh-pages": "^2.2.0"
   },
-  "homepage": "http://laon63.github.io"
+  "homepage": "/"
 }

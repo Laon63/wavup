@@ -91,14 +91,22 @@ const channelReducer = (state, action) => {
 
 const categoryReducer = (state, action) => {
   switch (action.type) {
+    case "SHOW":
+      return {
+        ...state,
+        toggleCategory: true,
+      }
+    case "HIDE":
+      return {
+        ...state,
+        toggleCategory: false,
+      }
     case "TOGGLE":
       return {
         ...state,
         toggleCategory: !state.toggleCategory,
         playListInfo: action.playListInfo
       };
-    case "HIDE":
-      return null;
     default:
       return state;
   }
