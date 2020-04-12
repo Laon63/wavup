@@ -7,10 +7,12 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
+    "bootstrap": "^4.4.1",
     "classnames": "^2.2.6",
     "moment": "^2.24.0",
     "random": "^2.1.1",
     "react": "^16.12.0",
+    "react-bootstrap": "^1.0.0",
     "react-dom": "^16.12.0",
     "react-moment": "^0.9.7",
     "react-router-dom": "^5.1.2",
@@ -23,12 +25,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-
     "cname": "echo www.wavup.me > build\\CNAME",
     "nojekyll": "echo > build\\.nojekyll",
     "predeploy": "npm run build && npm run cname && npm run nojekyll",
     "deploy": "gh-pages --add --dotfiles -d build"
-
   },
   "eslintConfig": {
     "extends": "react-app"

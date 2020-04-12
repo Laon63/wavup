@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { URL_ROUTER_NAME, channels } from "../utils/consts";
+import Modal from "react-bootstrap/Modal";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -129,9 +130,17 @@ const Footer = styled.div`
   padding: 5rem 3rem 3rem 3rem;
   color: #666666;
 `;
+const ModalHeader = styled.div`
+  display: flex;
+`;
+const DeviceLink = styled.div`
+  color: ${props => (props.isActive ? "#2196f3" : "#9e9e9e")};
+  margin: 0 0.5rem;
+  cursor: pointer;
+`;
 
 const goChannel = (history, channel) => {
-  if(!channel.playList || !channel.playList.length){
+  if (!channel.playList || !channel.playList.length) {
     alert(`${channel.name}의 목록이 없습니다`);
     return;
   }
@@ -139,14 +148,90 @@ const goChannel = (history, channel) => {
 };
 
 const Landing = ({ history }) => {
+  const [modalShow, setModalShow] = useState(false);
+  const [modalTab, setModalTab] = useState("Android");
+  const handleClose = () => setModalShow(false);
+  const handleShow = () => setModalShow(true);
+  const handleAndroidShow = () => setModalTab("Android");
+  const handleIOSShow = () => setModalTab("iOS");
+
   return (
     <Wrapper>
+      <Modal show={modalShow} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <ModalHeader>
+            <DeviceLink
+              isActive={modalTab === "Android"}
+              onClick={handleAndroidShow}
+            >
+              Android
+            </DeviceLink>
+            <DeviceLink isActive={modalTab === "iOS"} onClick={handleIOSShow}>
+              iOS
+            </DeviceLink>
+          </ModalHeader>
+        </Modal.Header>
+        <Modal.Body>
+          {modalTab === "Android" && (
+            <div>
+              <div>크롬(chrome) 브라우저</div>
+              <br />
+              <div>1. youtube.com 접속</div>
+              <br/>
+              <img src={"/images/android1.png"} alt=""></img>
+              <br/>
+              <br/>
+              <br/>
+              <div>2. 아무 영상이나 들어간 후 점 세개 클릭</div>
+              <br/>
+              <img src={"/images/android2.png"} alt=""></img>
+              <br/>
+              <br/>
+              <br/>
+              <div>3. 데스크톱 클릭</div>
+              <br/>
+              <img src={"/images/android3.png"} alt=""></img>
+              <br/>
+              <br/>
+              <br/>
+              <div>4. 모두 닫고, wavup.me 접속</div>
+              <br/>
+              <img src={"/images/android4.png"} alt=""></img>
+              <br/>
+              <br/>
+              <br/>
+              <div>5. 채널 선택 후, 영상 플레이</div>
+              <br/>
+              <img src={"/images/android5.png"} alt=""></img>
+              <br/>
+              <br/>
+              <br/>
+              <div>6. 홈화면으로 가면 영상이 중지되고 상단 스피커 아이콘 표시</div>
+              <br/>
+              <img src={"/images/android6.png"} alt=""></img>
+              <br/>
+              <br/>
+              <br/>
+              <div>7. 상단바를 내리면 중지된 영상이 나오며, 플레이 버튼 클릭</div>
+              <br/>
+              <img src={"/images/android7.png"} alt=""></img>
+              <br/>
+              <br/>
+              <br/>
+              <div>8. 백그라운드 재생 성공! 마음껏 다른 작업을 하세요</div>
+              <br/>
+            </div>
+          )}
+          {modalTab === "iOS" && <div>준비중...</div>}
+        </Modal.Body>
+      </Modal>
+
       <Header>
         <Titles>
           <SubTitle>음악과 함께 하고 싶을 땐</SubTitle>
           <Title>WAVUP</Title>
         </Titles>
-        <Expander>
+        <Expander onClick={handleShow}>
           백그라운드에서 재생하는 방법
           <i className="material-icons">expand_more</i>
         </Expander>
@@ -175,7 +260,8 @@ const Landing = ({ history }) => {
         </PlayList>
       </Contents>
       <Footer>
-            developed by <span style={{fontWeight: 600}}>브로콜리, Wise Cow, 로봇</span>
+        developed by{" "}
+        <span style={{ fontWeight: 600 }}>브로콜리, Wise Cow, 로봇</span>
       </Footer>
     </Wrapper>
   );
