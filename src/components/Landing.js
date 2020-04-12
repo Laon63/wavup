@@ -178,43 +178,43 @@ const Landing = ({ history }) => {
               <br />
               <div>1. youtube.com 접속</div>
               <br/>
-              <img src={"/images/android1.png"} alt=""></img>
+              <img src={"/images/android1.png"} alt="" style={{ width: "100%", height: "100%" }}></img>
               <br/>
               <br/>
               <br/>
               <div>2. 아무 영상이나 들어간 후 점 세개 클릭</div>
               <br/>
-              <img src={"/images/android2.png"} alt=""></img>
+              <img src={"/images/android2.png"} alt="" style={{ width: "100%", height: "100%" }}></img>
               <br/>
               <br/>
               <br/>
               <div>3. 데스크톱 클릭</div>
               <br/>
-              <img src={"/images/android3.png"} alt=""></img>
+              <img src={"/images/android3.png"} alt="" style={{ width: "100%", height: "100%" }}></img>
               <br/>
               <br/>
               <br/>
               <div>4. 모두 닫고, wavup.me 접속</div>
               <br/>
-              <img src={"/images/android4.png"} alt=""></img>
+              <img src={"/images/android4.png"} alt="" style={{ width: "100%", height: "100%" }}></img>
               <br/>
               <br/>
               <br/>
               <div>5. 채널 선택 후, 영상 플레이</div>
               <br/>
-              <img src={"/images/android5.png"} alt=""></img>
+              <img src={"/images/android5.png"} alt="" style={{ width: "100%", height: "100%" }}></img>
               <br/>
               <br/>
               <br/>
               <div>6. 홈화면으로 가면 영상이 중지되고 상단 스피커 아이콘 표시</div>
               <br/>
-              <img src={"/images/android6.png"} alt=""></img>
+              <img src={"/images/android6.png"} alt="" style={{ width: "100%", height: "100%" }}></img>
               <br/>
               <br/>
               <br/>
               <div>7. 상단바를 내리면 중지된 영상이 나오며, 플레이 버튼 클릭</div>
               <br/>
-              <img src={"/images/android7.png"} alt=""></img>
+              <img src={"/images/android7.png"} alt="" style={{ width: "100%", height: "100%" }}></img>
               <br/>
               <br/>
               <br/>
