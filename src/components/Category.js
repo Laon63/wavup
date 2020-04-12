@@ -15,7 +15,7 @@ const Wrapper = styled.div`
   overflow: hidden;
 
   ${media.mobile`
-    flex: 1;
+    flex: 4;
   `}
 `;
 

@@ -19,8 +19,10 @@ const Wrapper = styled.div`
 
   ${media.mobile`
     width: 100%;
-    flex-direction: column-reverse;
-    padding-top: 4em;
+    height: 100%;
+    flex-direction: column;
+    padding-top: 0;
+    max-height: max-content;
   `}
 `;
 

@@ -21,7 +21,7 @@ const Wrapper = styled.div`
 
   ${media.mobile`
     border-radius: 0;
-    /* padding-top: 64%; */
+    max-height: 400px;
   `}
 `;
 
