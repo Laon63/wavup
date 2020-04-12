@@ -18,9 +18,11 @@ const Wrapper = styled.div`
   flex: 1;
   background-color: black;
   font-family: "Baloo Bhai", cursive;
+  margin-top: 2px;
 
   ${media.mobile`
     border-radius: 0;
+    min-height: 185px;
     max-height: 400px;
   `}
 `;
