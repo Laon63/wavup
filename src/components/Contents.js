@@ -14,6 +14,8 @@ const Wrapper = styled.div`
 
   ${media.mobile`
     flex-direction: column;
+    height: 85%;
+    flex: 1;
   `}
 `;
 

@@ -10,17 +10,17 @@ import { withRouter } from "react-router-dom";
 
 const Wrapper = styled.div`
   width: 80%;
-  height: 55%;
+  height: 100%;
   max-width: 1000px;
   max-height: 600px;
   display: flex;
   flex-direction: column;
-  padding-top: 3rem;
 
   ${media.mobile`
     width: 100%;
-    flex-direction: column-reverse;
-    padding-top: 4em;
+    flex-direction: column;
+    padding-top: 0;
+    max-height: max-content;
   `}
 `;
 
