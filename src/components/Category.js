@@ -12,6 +12,7 @@ const Wrapper = styled.div`
   background-color: black;
   font-family: "Baloo Bhai", cursive;
   margin-left: 2px;
+  overflow: hidden;
 
   ${media.mobile`
     flex: 1;

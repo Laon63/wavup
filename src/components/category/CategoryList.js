@@ -21,8 +21,6 @@ const Ul = styled.ul`
   flex-direction: column;
   padding: 0;
   margin: 0;
-  /* overflow: auto; */
-  /* max-height: 400px; */
   height: 100%;
 `;
 
@@ -53,7 +51,6 @@ const Span = styled.span`
   flex: 9;
   padding: 10px 5px 0 5px;
   display: -webkit-box;
-  overflow: hidden;
   word-break: break-all;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
