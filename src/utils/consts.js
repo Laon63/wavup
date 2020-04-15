@@ -33,7 +33,8 @@ export const channels = [
       "bTJP8RfaCJQ",
       "a_iQqN1Hp74"
     ],
-    initialMessages: ["집중력을 높여주는 음악으로 최적의 환경을 만들어 보세요"]
+    initialMessages: ["집중력을 높여주는 음악으로 최적의 환경을 만들어 보세요"],
+    category: ["music"],
   },
   {
     id: "working",
@@ -61,7 +62,8 @@ export const channels = [
     initialMessages: [
       "당신의 노동력이 +10 증가하였습니다",
       "음악을 듣는 동안 피곤하지 않습니다"
-    ]
+    ],
+    category: ["music"],
   },
   {
     id: "animation",
@@ -83,7 +85,8 @@ export const channels = [
       "9VPLBCmhCiE",
       "EVyS9UvXkT0"
     ],
-    initialMessages: ["감미로운 애니메이션OST"]
+    initialMessages: ["감미로운 애니메이션OST"],
+    category: ["music"],
   },
   {
     id: "cheerup",
@@ -108,7 +111,8 @@ export const channels = [
       "tPTnvI8qXn4",
       "57x7Rlh-b74"
     ],
-    initialMessages: ["오늘 하루도 수고했어요", "당신은 잘하고 있어요"]
+    initialMessages: ["오늘 하루도 수고했어요", "당신은 잘하고 있어요"],
+    category: ["music"],
   },
   {
     id: "beforeworking",
@@ -135,7 +139,8 @@ export const channels = [
       "6cStzZy1kuU",
       "FvM0UPzzV1M",
     ],
-    initialMessages: ["음악이라도 듣고 힘내봐요", "알아요..."]
+    initialMessages: ["음악이라도 듣고 힘내봐요", "알아요..."],
+    category: ["music"],
   },
   {
     id: "refreshing",
@@ -161,7 +166,8 @@ export const channels = [
       "wKjvFRHitVw",
       "gkIxUlJ8bvs"
     ],
-    initialMessages: ["기분전환되는 상쾌한 음악"]
+    initialMessages: ["기분전환되는 상쾌한 음악"],
+    category: ["music"],
   },
   {
     id: "cafe",
@@ -184,7 +190,8 @@ export const channels = [
       "rUP6CT5cYfs",
       "OPS19XCeGm0",
     ],
-    initialMessages: ["향기로운 커피와 감미로운 음악"]
+    initialMessages: ["향기로운 커피와 감미로운 음악"],
+    category: ["music"],
   },
   {
     id: "drive",
@@ -212,7 +219,8 @@ export const channels = [
       "MIfgoCJzpL0",
       "3XHcLlI7Ono",
     ],
-    initialMessages: ["졸음운전 퇴치", "기분좋은 음악과 함께 드라이브하세요"]
+    initialMessages: ["졸음운전 퇴치", "기분좋은 음악과 함께 드라이브하세요"],
+    category: ["music"],
   },
   {
     id: "shower",
@@ -234,7 +242,8 @@ export const channels = [
       "QwsIEFc6tDE",
       "e3MG4dcm594",
     ],
-    initialMessages: ["신나게 나갈 준비!"]
+    initialMessages: ["신나게 나갈 준비!"],
+    category: ["music"],
   },
   {
     id: "hiphop",
@@ -262,7 +271,8 @@ export const channels = [
       "WVyfl9QNulY",
       "jZ-Tg3hxBos",
     ],
-    initialMessages: ["힙하고 트렌디한 음악"]
+    initialMessages: ["힙하고 트렌디한 음악"],
+    category: ["music"],
   },
   {
     id: "running",
@@ -282,7 +292,8 @@ export const channels = [
       "UmrKn9s7BmM",
       "MXAw-pvRr3Q",
     ],
-    initialMessages: ["우사인볼트로 빙의되는 음악"]
+    initialMessages: ["우사인볼트로 빙의되는 음악"],
+    category: ["music"],
   },
   {
     id: "gym",
@@ -306,7 +317,8 @@ export const channels = [
       "_BTWvXFTMXg",
       "vWjK42ZxlcQ",
     ],
-    initialMessages: ["단백질 보충제가 필요없는 음악"]
+    initialMessages: ["단백질 보충제가 필요없는 음악"],
+    category: ["music"],
   },
   {
     id: "club",
@@ -332,7 +344,8 @@ export const channels = [
       "769Qha-Pjgg",
       "hThEYRqP7E0",
     ],
-    initialMessages: ["흥이 내 몸을 지배한다"]
+    initialMessages: ["흥이 내 몸을 지배한다"],
+    category: ["music"],
   },
   {
     id: "sleep",
@@ -357,7 +370,8 @@ export const channels = [
       "P470PcW8kMQ",
       "eLLjQVG9HZs",
     ],
-    initialMessages: ["당신은 이제 잠에 듭니다", "레드썬"]
+    initialMessages: ["당신은 이제 잠에 듭니다", "레드썬"],
+    category: ["music"],
   },
   {
     id: "romantic",
@@ -378,7 +392,8 @@ export const channels = [
       "pLVK8Md1TOs",
       "hb50T53z8cg"
     ],
-    initialMessages: ["오늘 밤을 뜨겁게 만들어줄 음악"]
+    initialMessages: ["오늘 밤을 뜨겁게 만들어줄 음악"],
+    category: ["music"],
   },
   {
     id: "emotion",
@@ -401,7 +416,8 @@ export const channels = [
       "_qmcg4vqmVg",
       "wDw4yvv1OHk",
     ],
-    initialMessages: ["당신은 혼자가 아니예요"]
+    initialMessages: ["당신은 혼자가 아니예요"],
+    category: ["music"],
   },
   {
     id: "sweet",
@@ -429,7 +445,8 @@ export const channels = [
       "Gj31xjvMRAc",
       "b3Ry5LSHQGU",
     ],
-    initialMessages: ["심장아 나대지마"]
+    initialMessages: ["심장아 나대지마"],
+    category: ["music"],
   },
   {
     id: "travel",
@@ -453,7 +470,8 @@ export const channels = [
       "jjqFnO284hA",
       "76Wygb_Aqz0",
     ],
-    initialMessages: ["난 짐쌀때가 제일 설레더라"]
+    initialMessages: ["난 짐쌀때가 제일 설레더라"],
+    category: ["music"],
   },
   {
     id: "classic",
@@ -480,7 +498,8 @@ export const channels = [
       "KH7Mli_cKEs",
       "g91kQyy4G7E",
     ],
-    initialMessages: ["매력적인 클래식 음악"]
+    initialMessages: ["매력적인 클래식 음악"],
+    category: ["music"],
   },
 
 ];

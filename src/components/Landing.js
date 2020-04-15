@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { URL_ROUTER_NAME, channels } from "../utils/consts";
 import Modal from "react-bootstrap/Modal";
@@ -10,7 +10,7 @@ const Wrapper = styled.div`
 `;
 
 const Header = styled.div`
-  height: 40%;
+  height: 35%;
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
     url("/images/listening.png") no-repeat;
   background-size: cover;
@@ -134,9 +134,47 @@ const ModalHeader = styled.div`
   display: flex;
 `;
 const DeviceLink = styled.div`
-  color: ${props => (props.isActive ? "#2196f3" : "#9e9e9e")};
+  color: ${(props) => (props.isActive ? "#2196f3" : "#9e9e9e")};
   margin: 0 0.5rem;
   cursor: pointer;
+`;
+const MenuBar = styled.div`
+  padding: 0 1rem;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+`;
+const Menu = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 1rem;
+
+  & .menutitle {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    font-family: "Hind Siliguri", sans-serif;
+    letter-spacing: 0.1rem;
+    cursor: pointer;
+
+    color: ${(props) => (props.isActive ? "#00b423" : "#8e8e8e")};
+
+    &:hover {
+      color: #00b423;
+    }
+  }
+
+  & .activebar {
+    background-color: ${(props) => (props.isActive ? "#00b423" : "")};
+    width: 100%;
+    height: 0.2rem;
+  }
+`;
+const Seperator = styled.hr`
+  margin: 0;
 `;
 
 const goChannel = (history, channel) => {
@@ -154,6 +192,23 @@ const Landing = ({ history }) => {
   const handleShow = () => setModalShow(true);
   const handleAndroidShow = () => setModalTab("Android");
   const handleIOSShow = () => setModalTab("iOS");
+
+  const [activeMenu, setActiveMenu] = useState("music");
+  const handleMenuToggle = function (menu) {
+    setActiveMenu(menu);
+  };
+
+  //메뉴 변경에 따른 목록 변경
+  const [playList, setPlayList] = useState([]);
+  useEffect(() => {
+    if (activeMenu === "all") {
+      setPlayList(channels);
+    } else {
+      setPlayList(
+        channels.filter((x) => !x.category || x.category.includes(activeMenu))
+      );
+    }
+  }, [activeMenu]);
 
   return (
     <Wrapper>
@@ -177,49 +232,81 @@ const Landing = ({ history }) => {
               <div>크롬(chrome) 브라우저</div>
               <br />
               <div>1. youtube.com 접속</div>
-              <br/>
-              <img src={"/images/android1.png"} alt="" style={{ width: "100%", height: "100%" }}></img>
-              <br/>
-              <br/>
-              <br/>
+              <br />
+              <img
+                src={"/images/android1.png"}
+                alt=""
+                style={{ width: "100%", height: "100%" }}
+              ></img>
+              <br />
+              <br />
+              <br />
               <div>2. 아무 영상이나 들어간 후 점 세개 클릭</div>
-              <br/>
-              <img src={"/images/android2.png"} alt="" style={{ width: "100%", height: "100%" }}></img>
-              <br/>
-              <br/>
-              <br/>
+              <br />
+              <img
+                src={"/images/android2.png"}
+                alt=""
+                style={{ width: "100%", height: "100%" }}
+              ></img>
+              <br />
+              <br />
+              <br />
               <div>3. 데스크톱 클릭</div>
-              <br/>
-              <img src={"/images/android3.png"} alt="" style={{ width: "100%", height: "100%" }}></img>
-              <br/>
-              <br/>
-              <br/>
+              <br />
+              <img
+                src={"/images/android3.png"}
+                alt=""
+                style={{ width: "100%", height: "100%" }}
+              ></img>
+              <br />
+              <br />
+              <br />
               <div>4. 모두 닫고, wavup.me 접속</div>
-              <br/>
-              <img src={"/images/android4.png"} alt="" style={{ width: "100%", height: "100%" }}></img>
-              <br/>
-              <br/>
-              <br/>
+              <br />
+              <img
+                src={"/images/android4.png"}
+                alt=""
+                style={{ width: "100%", height: "100%" }}
+              ></img>
+              <br />
+              <br />
+              <br />
               <div>5. 채널 선택 후, 영상 플레이</div>
-              <br/>
-              <img src={"/images/android5.png"} alt="" style={{ width: "100%", height: "100%" }}></img>
-              <br/>
-              <br/>
-              <br/>
-              <div>6. 홈화면으로 가면 영상이 중지되고 상단 스피커 아이콘 표시</div>
-              <br/>
-              <img src={"/images/android6.png"} alt="" style={{ width: "100%", height: "100%" }}></img>
-              <br/>
-              <br/>
-              <br/>
-              <div>7. 상단바를 내리면 중지된 영상이 나오며, 플레이 버튼 클릭</div>
-              <br/>
-              <img src={"/images/android7.png"} alt="" style={{ width: "100%", height: "100%" }}></img>
-              <br/>
-              <br/>
-              <br/>
+              <br />
+              <img
+                src={"/images/android5.png"}
+                alt=""
+                style={{ width: "100%", height: "100%" }}
+              ></img>
+              <br />
+              <br />
+              <br />
+              <div>
+                6. 홈화면으로 가면 영상이 중지되고 상단 스피커 아이콘 표시
+              </div>
+              <br />
+              <img
+                src={"/images/android6.png"}
+                alt=""
+                style={{ width: "100%", height: "100%" }}
+              ></img>
+              <br />
+              <br />
+              <br />
+              <div>
+                7. 상단바를 내리면 중지된 영상이 나오며, 플레이 버튼 클릭
+              </div>
+              <br />
+              <img
+                src={"/images/android7.png"}
+                alt=""
+                style={{ width: "100%", height: "100%" }}
+              ></img>
+              <br />
+              <br />
+              <br />
               <div>8. 백그라운드 재생 성공! 마음껏 다른 작업을 하세요</div>
-              <br/>
+              <br />
             </div>
           )}
           {modalTab === "iOS" && <div>준비중...</div>}
@@ -237,8 +324,34 @@ const Landing = ({ history }) => {
         </Expander>
       </Header>
       <Contents>
+        <MenuBar>
+          <Menu
+            isActive={activeMenu === "all"}
+            onClick={handleMenuToggle.bind(null, "all")}
+          >
+            <div class="menutitle">#ALL</div>
+            <div class="activebar"></div>
+          </Menu>
+          <Menu
+            isActive={activeMenu === "music"}
+            onClick={handleMenuToggle.bind(null, "music")}
+          >
+            <div class="menutitle">#MUSIC</div>
+            <div class="activebar"></div>
+          </Menu>
+          <Menu
+            isActive={activeMenu === "english"}
+            onClick={handleMenuToggle.bind(null, "english")}
+          >
+            <div class="menutitle">#ENGLISH</div>
+            <div class="activebar"></div>
+          </Menu>
+        </MenuBar>
+
+        <Seperator></Seperator>
+
         <PlayList>
-          {channels.map(item => (
+          {playList.map((item) => (
             <CardWrapper key={item.id}>
               <Card onClick={() => goChannel(history, item)}>
                 <CardInner>
