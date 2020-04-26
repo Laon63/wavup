@@ -152,9 +152,9 @@ const Menu = styled.div`
   padding: 0 1rem;
 
   & .menutitle {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    font-size: 1.1rem;
+    padding-top: 0.35rem;
+    padding-bottom: 0.35rem;
+    font-size: 0.8rem;
     font-weight: 500;
     font-family: "Hind Siliguri", sans-serif;
     letter-spacing: 0.1rem;
@@ -333,17 +333,17 @@ const Landing = ({ history }) => {
             <div class="activebar"></div>
           </Menu>
           <Menu
+            isActive={activeMenu === "favorite"}
+            onClick={handleMenuToggle.bind(null, "favorite")}
+          >
+            <div class="menutitle">#FAVORITE</div>
+            <div class="activebar"></div>
+          </Menu>
+          <Menu
             isActive={activeMenu === "music"}
             onClick={handleMenuToggle.bind(null, "music")}
           >
             <div class="menutitle">#MUSIC</div>
-            <div class="activebar"></div>
-          </Menu>
-          <Menu
-            isActive={activeMenu === "english"}
-            onClick={handleMenuToggle.bind(null, "english")}
-          >
-            <div class="menutitle">#ENGLISH</div>
             <div class="activebar"></div>
           </Menu>
         </MenuBar>

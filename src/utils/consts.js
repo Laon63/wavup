@@ -10,7 +10,8 @@ export const channels = [
     tags: "#나만의 목록 #좋아요",
     img: "/images/mysound.png",
     playList: [],
-    initialMessages: ["내가 좋아하는 소리들"]
+    initialMessages: ["내가 좋아하는 소리들"],
+    category: ["favorite"],
   },
   {
     id: "study",
