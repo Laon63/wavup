@@ -176,6 +176,13 @@ const Menu = styled.div`
 const Seperator = styled.hr`
   margin: 0;
 `;
+const MailTo = styled.a`
+  text-decoration: none !important;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 const goChannel = (history, channel) => {
   if (!channel.playList || !channel.playList.length) {
@@ -375,6 +382,10 @@ const Landing = ({ history }) => {
       <Footer>
         developed by{" "}
         <span style={{ fontWeight: 600 }}>브로콜리, Wise Cow, 로봇</span>
+        <br />
+        <MailTo href="mailto:wavupme@gmail.com">
+          <i className="material-icons" style={{margin: "0 0.5rem", fontSize: "1rem"}}>mail_outline</i>wavupme@gmail.com
+        </MailTo>
       </Footer>
     </Wrapper>
   );
