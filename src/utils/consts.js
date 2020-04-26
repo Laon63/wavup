@@ -293,14 +293,14 @@ export const channels = [
       "UmrKn9s7BmM",
       "MXAw-pvRr3Q",
     ],
-    initialMessages: ["우사인볼트로 빙의되는 음악"],
+    initialMessages: ["우사인볼트 빙의되는 음악"],
     category: ["music"],
   },
   {
     id: "gym",
-    name: "헬창들이 좋아하는 음악",
+    name: "언더아머 입는 그날까지",
     title: "GYM",
-    tags: "#헬스 #근육펌핑",
+    tags: "#헬스 #3대500 #올여름엔나도",
     img: "/images/gym.png",
     playList: [
       "HurUkZs8zR0",
