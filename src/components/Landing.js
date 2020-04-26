@@ -329,22 +329,22 @@ const Landing = ({ history }) => {
             isActive={activeMenu === "all"}
             onClick={handleMenuToggle.bind(null, "all")}
           >
-            <div class="menutitle">#ALL</div>
-            <div class="activebar"></div>
+            <div className="menutitle">#ALL</div>
+            <div className="activebar"></div>
           </Menu>
           <Menu
             isActive={activeMenu === "favorite"}
             onClick={handleMenuToggle.bind(null, "favorite")}
           >
-            <div class="menutitle">#FAVORITE</div>
-            <div class="activebar"></div>
+            <div className="menutitle">#FAVORITE</div>
+            <div className="activebar"></div>
           </Menu>
           <Menu
             isActive={activeMenu === "music"}
             onClick={handleMenuToggle.bind(null, "music")}
           >
-            <div class="menutitle">#MUSIC</div>
-            <div class="activebar"></div>
+            <div className="menutitle">#MUSIC</div>
+            <div className="activebar"></div>
           </Menu>
         </MenuBar>
 
