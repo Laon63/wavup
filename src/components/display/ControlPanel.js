@@ -106,7 +106,7 @@ const ControlPanel = () => {
       params: {
         id: videoId,
         part: "snippet",
-        key: "AIzaSyCVZMG-9XPs2D78KwRqLYQ-I60XNMzpBA4",
+        key: "AIzaSyCXl2NVfwCHKlMvmMd3nDaoduSsFs192O4",
         maxResults: 2
       }
     });
