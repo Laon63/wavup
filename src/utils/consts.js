@@ -32,7 +32,8 @@ export const channels = [
       "bQzIQa5YKvw",
       "mUeZDu9rBH8",
       "bTJP8RfaCJQ",
-      "a_iQqN1Hp74"
+      "a_iQqN1Hp74",
+      "-FlxM_0S2lA",
     ],
     initialMessages: ["집중력을 높여주는 음악으로 최적의 환경을 만들어 보세요"],
     category: ["music"],
