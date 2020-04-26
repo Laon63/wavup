@@ -385,7 +385,6 @@ const Landing = ({ history }) => {
         <span style={{ fontWeight: 600 }}>브로콜리, Wise Cow, 로봇</span>
         <br />
         <MailTo href="mailto:wavupme@gmail.com">
-          contact: 
           <i className="material-icons" style={{margin: "0 0.5rem", fontSize: "1rem"}}>mail_outline</i>wavupme@gmail.com
         </MailTo>
       </Footer>
