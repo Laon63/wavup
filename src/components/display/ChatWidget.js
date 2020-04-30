@@ -23,6 +23,7 @@ const WriteMessage = styled.input`
   border-radius: 0.3rem;
   color: white;
   width: 100%;
+  font-family: "Arial";
   cursor: ${props => (props.disabled ? "not-allowed" : "auto")};
 `;
 
@@ -128,13 +129,15 @@ const ChatWidget = () => {
 
   useEffect(() => {
     // eslint-disable-next-line no-undef
-    ref.current.socket = (window.io && window.io("http://ec2-13-125-48-202.ap-northeast-2.compute.amazonaws.com:8080")) || {
+    ref.current.socket = (window.io && window.io("https://api.wavup.me")) || {
       on: () => {}
     };
 
     //채팅서버 접속
     ref.current.socket.on("connect", () => {
       setConnected(true);
+      ref.current.socket.emit("userConnect");
+      
       let realNick = ref.current.nickName;
       if (!realNick) {
         realNick = prompt("Please enter your nickname", "");
