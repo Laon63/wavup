@@ -41,6 +41,7 @@ const ControlPanel = () => {
   const [font, setFont] = useState(0);
   const [isFavorite, setFavorite] = useState(0);
   const ref = useRef({
+    channel: Object.assign({}, channel),
     isPortrait: window.matchMedia("(orientation: portrait)").matches
   });
   const size = useWindowSize();
@@ -94,65 +95,39 @@ const ControlPanel = () => {
   };
 
   const skipNext = () => {
-    dispatch.video({ type: "NEXT", playList: channel.playList });
+    dispatch.video({ type: "NEXT", playList: ref.current.channel.playList });
   };
 
   const skipPrev = () => {
-    dispatch.video({ type: "PREV", playList: channel.playList });
+    dispatch.video({ type: "PREV", playList: ref.current.channel.playList });
   };
 
-  const getVideoInfo = videoId => {
-    return axios.get(GET_VIDEOS_URL, {
-      params: {
-        id: videoId,
-        part: "snippet",
-        key: "AIzaSyCXl2NVfwCHKlMvmMd3nDaoduSsFs192O4",
-        maxResults: 2
-      }
-    });
-  };
+  // const getVideoInfo = videoId => {
+  //   return axios.get(GET_VIDEOS_URL, {
+  //     params: {
+  //       id: videoId,
+  //       part: "snippet",
+  //       key: "AIzaSyCXl2NVfwCHKlMvmMd3nDaoduSsFs192O4",
+  //       maxResults: 2
+  //     }
+  //   });
+  // };
 
-  let playListInfo;
   const toggleCategory = () => {
-    if (playListInfo) {
-      dispatch.category({ type: "TOGGLE", playListInfo: playListInfo });
-    } else {
-      Promise.all(
-        channel.playList.map(videoId => {
-          return getVideoInfo(videoId);
-        })
-      )
-        .then(response => {
-          playListInfo = response.map(res => {
-            if (res.data.items.length > 0) {
-              return res.data.items[0].snippet;
-            } else {
-              return {
-                title: "error",
-                description: "error"
-              };
-            }
-          });
-          dispatch.category({ type: "TOGGLE", playListInfo: playListInfo });
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    }
+    dispatch.category({ type: "TOGGLE" });
   };
 
   //favorite 여부
   useEffect(() => {
-    const videoId = channel.playList[video.currentVideo];
-    setFavorite(video.myList.includes(videoId));
-  }, [channel.playList, video.currentVideo, video.myList]);
+    const videoId = ref.current.channel.playList[video.currentVideo].id;
+    setFavorite(video.myList.some(x => x.id === videoId));
+  }, [video.currentVideo, video.myList]);
 
   const toggleFavorite = () => {
-    const videoId = channel.playList[video.currentVideo];
     if (isFavorite) {
-      dispatch.video({ type: "REMOVE_MYLIST", videoId: videoId });
+      dispatch.video({ type: "REMOVE_MYLIST", video: ref.current.channel.playList[video.currentVideo] });
     } else {
-      dispatch.video({ type: "ADD_MYLIST", videoId: videoId });
+      dispatch.video({ type: "ADD_MYLIST", video: ref.current.channel.playList[video.currentVideo] });
     }
   };
 

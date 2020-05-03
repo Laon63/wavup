@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useRef, useState } from "react";
 import styled from "styled-components";
 import media from "../utils/media";
 import context from "../contexts";
@@ -25,18 +25,31 @@ const Wrapper = styled.div`
 `;
 
 function Main({ match }) {
-  const { channel, dispatch } = useContext(context);
+  const { channel, channels, dispatch } = useContext(context);
+  const [isOnceInitChannel, setIsOnceInitChannel] = useState(false);
+  const ref = useRef({
+    channel: Object.assign({}, channel),
+  });
+
+  function isValidChannel(channel) {
+    return channel && channel.playList && channel.playList.length;
+  }
 
   useEffect(() => {
     dispatch.channel({ type: "SET", id: match.params.id });
     dispatch.category({ type: "HIDE" });
-    
+
+    if (!isOnceInitChannel && isValidChannel(channel)) {
+      setIsOnceInitChannel(true);
+      ref.current.channel = Object.assign({}, channel);
+    }
+
     return () => {
       dispatch.channel({ type: "CLEAR" });
     };
-  }, []);
+  }, [channel, channels]);
 
-  if (!channel) {
+  if (!isValidChannel(ref.current.channel)) {
     return null;
   }
 

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import styled from "styled-components";
 import context from "../../contexts";
 
@@ -61,8 +61,10 @@ const Span = styled.span`
 `;
 
 function CategoryList() {
-  const { category, video, dispatch } = useContext(context);
-  const playListInfo = category.playListInfo;
+  const { channel, video, dispatch } = useContext(context);
+  const ref = useRef({
+    channel: Object.assign({}, channel),
+  });
   const currentVideoIndex = video.currentVideo;
 
   const CLICK_LIST = (index) => {
@@ -72,11 +74,10 @@ function CategoryList() {
   return (<Wrapper>
     <Ul>
       {
-        (playListInfo || []).map((item, i)=>{
-          const thumbnailURL = item.thumbnails ? item.thumbnails.default.url : "";
+        (ref.current.channel.playList || []).map((item, i)=>{
           return (
             <Li key={i} style={{ background: i === currentVideoIndex ? LIST_SELECTED_COLOR : ""}} onClick={CLICK_LIST.bind(null, i)}>
-              <Image src={thumbnailURL} alt="Error" />
+              <Image src={item.thumbnail} alt="Error" />
               <Span>{item.title}</Span>
             </Li>
           )

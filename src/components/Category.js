@@ -23,7 +23,7 @@ const Wrapper = styled.div`
 function Category() {
   const { category } = useContext(context);
   return (<Wrapper style={{ display: category.toggleCategory ? "flex" : "none" }}>
-    <CategoryList playListInfo={category.playListInfo}></CategoryList>
+    <CategoryList></CategoryList>
   </Wrapper>);
 }
 

@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
-import { URL_ROUTER_NAME, channels } from "../utils/consts";
+import { URL_ROUTER_NAME } from "../utils/consts";
 import Modal from "react-bootstrap/Modal";
+import context from "../contexts";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -194,13 +195,14 @@ const goChannel = (history, channel) => {
 };
 
 const Landing = ({ history }) => {
+  const { channels } = useContext(context);
   const [modalShow, setModalShow] = useState(false);
   const [modalTab, setModalTab] = useState("Android");
   const handleClose = () => setModalShow(false);
   const handleShow = () => setModalShow(true);
   const handleAndroidShow = () => setModalTab("Android");
   const handleIOSShow = () => setModalTab("iOS");
-
+  
   const [activeMenu, setActiveMenu] = useState("music");
   const handleMenuToggle = function (menu) {
     setActiveMenu(menu);
@@ -216,7 +218,7 @@ const Landing = ({ history }) => {
         channels.filter((x) => !x.category || x.category.includes(activeMenu))
       );
     }
-  }, [activeMenu]);
+  }, [activeMenu, channels]);
 
   return (
     <Wrapper>
@@ -372,7 +374,7 @@ const Landing = ({ history }) => {
                   </ThumbNail>
                   <CardDesc>
                     <CardName>{item.name}</CardName>
-                    <CardTags>{item.tags}</CardTags>
+                    <CardTags>{(item.tags || []).reduce((result, tag) => result + " #" + tag, "")}</CardTags>
                   </CardDesc>
                 </CardInner>
               </Card>

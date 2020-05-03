@@ -49,7 +49,7 @@ const Player = ({ children }) => {
     }).then(YT => {
       //create iframe player
       new YT.Player("player", {
-        videoId: ref.current.channel.playList[video.currentVideo],
+        videoId: ref.current.channel.playList[video.currentVideo].id,
         playerVars: {
           fs: 0,
           loop: 1
@@ -71,7 +71,7 @@ const Player = ({ children }) => {
   useEffect(() => {
     if (video.player) {
       video.player.loadVideoById(
-        ref.current.channel.playList[video.currentVideo]
+        ref.current.channel.playList[video.currentVideo].id
       );
     }
   }, [video.player, video.currentVideo]);
