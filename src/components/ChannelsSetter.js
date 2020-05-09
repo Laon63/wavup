@@ -12,11 +12,28 @@ function ChannelsSetter() {
 
   //채널 목록 조회
   useEffect(() => {
-    axios.get(API_URL.getChannels).then((res) => {
-      dispatch.channels({ channels: res.data, type: "ADD" });
-    });
+    if (!localStorage.v || !localStorage.channels) {
+      localStorage.removeItem("v");
+      localStorage.removeItem("channel");
+    }
+
+    axios
+      .get(API_URL.getChannels, { params: { v: localStorage.v } })
+      .then((res) => {
+        if (res.data) {
+          localStorage.setItem("v", res.data.v);
+          localStorage.setItem("channels", JSON.stringify(res.data.channels));
+          dispatch.channels({ channels: res.data.channels, type: "INIT" });
+          return;
+        }
+
+        dispatch.channels({
+          channels: JSON.parse(localStorage.channels),
+          type: "INIT",
+        });
+      });
   }, []);
-  
+
   return (
     <>
       <Route path={URL_ROUTER_NAME + "/"} component={Landing} exact />

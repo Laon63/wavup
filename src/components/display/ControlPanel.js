@@ -120,13 +120,15 @@ const ControlPanel = () => {
   //favorite 여부
   useEffect(() => {
     const videoId = ref.current.channel.playList[video.currentVideo].id;
-    setFavorite(video.myList.some(x => x.id === videoId));
+    setFavorite(video.myList.some(x => x === videoId));
   }, [video.currentVideo, video.myList]);
 
   const toggleFavorite = () => {
     if (isFavorite) {
+      dispatch.channels({ type: "REMOVE_PLAYLIST", channelId: "myList", video: ref.current.channel.playList[video.currentVideo] });
       dispatch.video({ type: "REMOVE_MYLIST", video: ref.current.channel.playList[video.currentVideo] });
     } else {
+      dispatch.channels({ type: "ADD_PLAYLIST", channelId: "myList", video: ref.current.channel.playList[video.currentVideo] });
       dispatch.video({ type: "ADD_MYLIST", video: ref.current.channel.playList[video.currentVideo] });
     }
   };

@@ -7,11 +7,42 @@ const Context = createContext();
 const Provider = ({ children }) => {
   const channelsReducer = (state, action) => {
     switch (action.type) {
-      case "ADD":
-        return state.concat(action.channels);
-      case "SET_PLAYLIST":
+      case "INIT":
+        const newState = state.concat(action.channels);
+
+        //myList 초기화
+        newState[0].playList = (
+          (localStorage.myList && JSON.parse(localStorage.myList)) ||
+          []
+        ).reduce((result, videoId) => {
+          for (let i in newState) {
+            const item = (newState[i].playList || []).find(
+              (x) => x.id === videoId
+            );
+            if (item) {
+              result.push(item);
+              return result;
+            }
+          }
+          return result;
+        }, []);
+        return newState;
+      case "ADD_PLAYLIST":
         const channel = state.find((x) => x.id === action.channelId);
-        channel.playList = action.playList;
+        if (
+          channel &&
+          !channel.playList.some((x) => x.id === action.video.id)
+        ) {
+          channel.playList.push(action.video);
+        }
+        return state;
+      case "REMOVE_PLAYLIST":
+        const channelr = state.find((x) => x.id === action.channelId);
+        if (channelr) {
+          channelr.playList = channelr.playList.filter(
+            (x) => x.id !== action.videoId
+          );
+        }
         return state;
       default:
         return state;
@@ -25,7 +56,7 @@ const Provider = ({ children }) => {
       title: "MY",
       tags: ["나만의 목록", "좋아요"],
       img: "/images/mysound.png",
-      playList: (localStorage.myList && JSON.parse(localStorage.myList)) || [],
+      playList: [],
       initialMessages: ["내가 좋아하는 소리들"],
       category: ["favorite"],
     },
@@ -87,33 +118,24 @@ const Provider = ({ children }) => {
       case "CLEAR":
         return { ...state, player: null, currentVideo: 0 };
       case "ADD_MYLIST":
-        if (state.myList.some((x) => x.id === action.video.id)) {
+        debugger;
+        if (state.myList.some((x) => x === action.video.id)) {
           return state;
         }
 
-        const addList = [...state.myList, action.video];
+        const addList = [...state.myList, action.video.id];
         localStorage.setItem("myList", JSON.stringify(addList));
-        channelsDispatch({
-          type: "SET_PLAYLIST",
-          channelId: "myList",
-          playList: addList,
-        });
         return {
           ...state,
           myList: addList,
         };
       case "REMOVE_MYLIST":
-        if (!state.myList.some((x) => x.id === action.video.id)) {
+        if (!state.myList.some((x) => x === action.video.id)) {
           return state;
         }
 
-        const removeList = state.myList.filter((x) => x.id !== action.video.id);
+        const removeList = state.myList.filter((x) => x !== action.video.id);
         localStorage.setItem("myList", JSON.stringify(removeList));
-        channelsDispatch({
-          type: "SET_PLAYLIST",
-          channelId: "myList",
-          playList: removeList,
-        });
         return {
           ...state,
           myList: removeList,
